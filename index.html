@@ -3,7 +3,63 @@
 <title>Updating Twitter status using PHP</title>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 
+<!-- script for highlighting active field -->
+<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+ $('input[type="text"]').addClass("idleField");
+ $('input[type="text"]').focus(function(){
+ $(this).removeClass("idleField").addClass("focusField");
+ if (this.value == this.defaultValue){
+ this.value = '';
+ }
+ if(this.value != this.defaultValue){
+ this.select();
+ }
+ });
+ $('input[type="password"]').addClass("idleField");
+ $('input[type="password"]').focus(function(){
+ $(this).removeClass("idleField").addClass("focusField");
+ if (this.value == this.defaultValue){
+ this.value = '';
+ }
+ if(this.value != this.defaultValue){
+ this.select();
+ }
+ });
+ $('textarea').addClass("idleField");
+ $('textarea').focus(function(){
+ $(this).removeClass("idleField").addClass("focusField");
+ if (this.value == this.defaultValue){
+ this.value = '';
+ }
+ if(this.value != this.defaultValue){
+ this.select();
+ }
+ });
+ $('input[type="text"]').blur(function(){
+ $(this).removeClass("focusField").addClass("idleField");
+ if ($.trim(this.value == '')){
+ this.value = (this.defaultValue ? this.defaultValue : '');
+ }
+ });
+ $('input[type="password"]').blur(function(){
+ $(this).removeClass("focusField").addClass("idleField");
+ if ($.trim(this.value == '')){
+ this.value = (this.defaultValue ? this.defaultValue : '');
+ }
+ });
+ $('textarea').blur(function(){
+ $(this).removeClass("focusField").addClass("idleField");
+ if ($.trim(this.value == '')){
+ this.value = (this.defaultValue ? this.defaultValue : '');
+ }
+ });
+});
 
+</script>
+
+<!-- script for char count -->
 <script type="text/javascript" src="http://ajax.googleapis.com/
 ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript">
@@ -46,25 +102,27 @@ return false;
 </div><!--End Quote1-->
 
 <div id="form" align="center"><!--Start Form-->
-<form name="form1" method="post" action="postToTwitter.php">
+<form name="form1" method="post" action="postToCal.php">
 
- <p><br />
- <label>New announcement:</label>
- </p>
- <p>
- <div align="left" id="character-count">
- <div id="count">140</div>
- <div id="barbox"><div id="bar"></div></div>
- </div>
- </p>
  <br />
  <p>
- <textarea name="t_update" cols="50" rows="5" id="t_update" ></textarea>
+ <label for="t_item">Food: </label>
+ <textarea name="t_item" cols="20" rows="1" id="t_item" ></textarea>
  </p>
 
+ <p>
+ <label for="t_location">Location: </label>
+ <textarea name="t_location" cols="20" rows="1" id="t_location" ></textarea>
+ </p>
+ 
+ <p>
+ <label for="t_time">Time: </label>
+ <textarea name="t_time" cols="20" rows="1" id="t_time" ></textarea>
+ </p>
+ 
  <p><br />
  <label>
- <input type="submit" name="Submit" value="Post To FoodOnGrounds!">
+ <input type="submit" name="Submit" value="Post to FoodOnGrounds!">
  </label>
  </p>
 </form>

@@ -79,3 +79,15 @@ label{
 text-shadow:0 1px 1px white;
 font-size:18px;
 }
+
+/* Highlight active field */
+.focusField {
+ border:solid 2px #73A6FF;
+ background:#EFF5FF;
+ color:#000;
+ }
+.idleField {
+ background:#EEE;
+ color: #6F6F6F;
+ border: solid 2px #DFDFDF;
+ }

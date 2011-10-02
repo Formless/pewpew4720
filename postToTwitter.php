@@ -16,13 +16,18 @@ require_once('twitteroauth/twitteroauth.php');
 $tweet = new TwitterOAuth($consumerKey, $consumerSecret, $oAuthToken, $oAuthSecret);
 
 //message
-$msg = $_POST['t_update'];
+$t_item = $_POST['t_item'];
+$t_location = $_POST['t_location'];
+$t_time = $_POST['t_time'];
+$msg = $t_item . " at " . $t_time . " in " . $t_location;
 
 //send a tweet
 $tweet->post('statuses/update', array('status' => $msg));
 
+// add to calendar
+$addCal = `postToCal.php`;
+
 //  refresh / redirect to an internal web page
-//  ------------------------------------------
 header( 'refresh: 3; url=index.html' ); # redirects to our homepage
 echo '<h2>Thanks for posting!</h2>';
 ?>
