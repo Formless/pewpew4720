@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>Updating Twitter status using PHP</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/
+ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+$("#t_update").keyup(function()
+{
+var box=$(this).val();
+var main = box.length *100;
+var value= (main / 140);
+var count= 140 - box.length;
+
+if(box.length <= 140)
+{
+$('#count').html(count);
+$('#bar').animate(
+{
+"width": value+'%',
+}, 1);
+}
+else
+{
+alert('Character Limit Exceeded!');
+
+;
+}
+return false;
+});
+
+});
+</script>
+
+</head>
+
+<body>
+ <h1><span id="header">Phase 1: PHP Web Service</span></h1>
+
+<div id="quote1"><!--Start Quote1-->
+<center><p>Send updates to Twitter using its API + PHP</p></center>
+</div><!--End Quote1-->
+
+<div id="form" align="center"><!--Start Form-->
+<form name="form1" method="post" action="postToTwitter.php">
+
+ <p><br />
+ <label>New announcement:</label>
+ </p>
+ <p>
+ <div align="left" id="character-count">
+ <div id="count">140</div>
+ <div id="barbox"><div id="bar"></div></div>
+ </div>
+ </p>
+ <br />
+ <p>
+ <textarea name="t_update" cols="50" rows="5" id="t_update" ></textarea>
+ </p>
+
+ <p><br />
+ <label>
+ <input type="submit" name="Submit" value="Post To FoodOnGrounds!">
+ </label>
+ </p>
+</form>
+</div><!--End Form-->
+
+<div id="quote2"><!--Start Quote2-->
+<center><p>CS 4720, Fall 2011: Peter Le, Eugene Moy, Wing Wong</p></center>
+</div><!--End Quote2-->
+
+
+
+</body>
+
+</html>
